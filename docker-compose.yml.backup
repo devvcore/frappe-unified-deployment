@@ -1,0 +1,2 @@
+# This is a backup of the original docker-compose.yml with all 7 apps
+# The simplified version uses only 3 core apps for better stability

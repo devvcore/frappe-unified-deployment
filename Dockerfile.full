@@ -24,8 +24,8 @@ RUN set -e; \
         bench get-app --branch $branch $app || bench get-app $app; \
     done
 
-# Build assets for 3 core apps only
-RUN bench build --apps hrms crm lms
+# Build assets
+RUN bench build --apps frappe hrms crm lms drive insights gameplan helpdesk
 
 WORKDIR /home/frappe/frappe-bench/sites
 

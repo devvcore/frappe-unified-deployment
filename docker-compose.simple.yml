@@ -1,0 +1,127 @@
+version: '3.8'
+
+services:
+  # Database
+  db:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-frappe123}
+      MYSQL_DATABASE: frappe
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - frappe-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-frappe123}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis-cache:
+    image: redis:alpine
+    networks:
+      - frappe-network
+
+  # Redis Queue
+  redis-queue:
+    image: redis:alpine
+    networks:
+      - frappe-network
+
+  # Frappe Backend (using official frappe/erpnext image which includes bench)
+  backend:
+    image: frappe/erpnext:v15.20.1
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - REDIS_CACHE=redis-cache:6379
+      - REDIS_QUEUE=redis-queue:6379
+      - SOCKETIO_PORT=9000
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+      - logs:/home/frappe/frappe-bench/logs
+    networks:
+      - frappe-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+
+  # Frontend (Nginx)
+  frontend:
+    image: frappe/erpnext:v15.20.1
+    command: ["nginx-entrypoint.sh"]
+    environment:
+      - BACKEND=backend:8000
+      - SOCKETIO=websocket:9000
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    networks:
+      - frappe-network
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+      - websocket
+
+  # WebSocket
+  websocket:
+    image: frappe/erpnext:v15.20.1
+    command: ["node", "/home/frappe/frappe-bench/apps/frappe/socketio.js"]
+    environment:
+      - REDIS_QUEUE=redis-queue:6379
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    networks:
+      - frappe-network
+    depends_on:
+      - redis-queue
+
+  # Queue Worker - Short
+  queue-short:
+    image: frappe/erpnext:v15.20.1
+    command: ["bench", "worker", "--queue", "short"]
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+      - logs:/home/frappe/frappe-bench/logs
+    networks:
+      - frappe-network
+    depends_on:
+      - backend
+
+  # Queue Worker - Long
+  queue-long:
+    image: frappe/erpnext:v15.20.1
+    command: ["bench", "worker", "--queue", "long"]
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+      - logs:/home/frappe/frappe-bench/logs
+    networks:
+      - frappe-network
+    depends_on:
+      - backend
+
+  # Scheduler
+  scheduler:
+    image: frappe/erpnext:v15.20.1
+    command: ["bench", "schedule"]
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+      - logs:/home/frappe/frappe-bench/logs
+    networks:
+      - frappe-network
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
+  sites:
+  logs:
+
+networks:
+  frappe-network:
+    driver: bridge

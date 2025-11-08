@@ -1,0 +1,22 @@
+FROM frappe/erpnext:v15.20.1
+
+USER root
+
+# Install git if not present
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+USER frappe
+
+WORKDIR /home/frappe/frappe-bench
+
+# Get the apps - using specific stable versions
+RUN bench get-app --branch version-15 hrms && \
+    bench get-app --branch main crm && \
+    bench get-app --branch main lms
+
+# Build assets for the apps
+RUN bench build --apps hrms crm lms
+
+WORKDIR /home/frappe/frappe-bench/sites
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "--timeout", "120", "frappe.app:application", "--preload"]
