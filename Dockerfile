@@ -24,8 +24,15 @@ RUN set -e; \
         bench get-app --branch $branch $app || bench get-app $app; \
     done
 
-# Build assets for 3 core apps only
-RUN bench build --apps hrms crm lms
+# Build assets ONE AT A TIME to reduce memory usage
+# This prevents out-of-memory errors during build
+RUN echo "Building hrms..." && bench build --app hrms
+RUN echo "Building crm..." && bench build --app crm
+RUN echo "Building lms..." && bench build --app lms
+RUN echo "Building drive..." && bench build --app drive
+RUN echo "Building insights..." && bench build --app insights
+RUN echo "Building gameplan..." && bench build --app gameplan
+RUN echo "Building helpdesk..." && bench build --app helpdesk
 
 WORKDIR /home/frappe/frappe-bench/sites
 

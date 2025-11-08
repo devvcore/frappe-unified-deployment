@@ -14,5 +14,21 @@
   {
     "url": "https://github.com/frappe/lms",
     "branch": "main"
+  },
+  {
+    "url": "https://github.com/frappe/drive",
+    "branch": "main"
+  },
+  {
+    "url": "https://github.com/frappe/insights",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/gameplan",
+    "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/helpdesk",
+    "branch": "develop"
   }
 ]
