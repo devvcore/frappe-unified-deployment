@@ -1,6 +1,6 @@
 # Frappe Unified Deployment
 
-A unified Docker-based deployment solution that combines **Frappe CRM**, **Frappe LMS (Learning Management System)**, and **Frappe HRMS** into a single site for easy deployment and management.
+A unified Docker-based deployment solution that combines **Frappe CRM**, **Frappe LMS (Learning Management System)**, **Frappe HRMS**, **Frappe Drive**, and **Frappe Insights** into a single site for easy deployment and management.
 
 ## 📋 What's Included
 
@@ -10,6 +10,8 @@ This repository provides a production-ready Docker Compose setup that includes:
 - **Frappe HRMS** - Complete HR and Payroll solution with 13+ modules
 - **Frappe CRM** - Modern, open-source CRM for sales teams
 - **Frappe LMS** - Learning Management System for courses and training
+- **Frappe Drive** - Open-source file storage, sharing, and collaboration platform
+- **Frappe Insights** - Open-source Business Intelligence and data analytics tool
 
 All apps are installed on a single Frappe site, sharing the same database and user authentication system.
 
@@ -99,6 +101,8 @@ After logging in, you can access different apps from the Frappe Desk:
 - **HRMS**: Click on "HR" or "HRMS" module
 - **CRM**: Click on "CRM" module
 - **LMS**: Click on "Learning" or "LMS" module
+- **Drive**: Click on "Drive" module for file storage and collaboration
+- **Insights**: Click on "Insights" module for business intelligence and analytics
 
 All apps are integrated and share the same user database and permissions system.
 
@@ -262,6 +266,8 @@ Common issues:
 - [Frappe HRMS Documentation](https://frappehr.com/docs)
 - [Frappe CRM Documentation](https://docs.frappe.io/crm)
 - [Frappe LMS Documentation](https://docs.frappe.io/lms)
+- [Frappe Drive Documentation](https://docs.frappe.io/drive)
+- [Frappe Insights Documentation](https://docs.frappe.io/insights)
 - [Frappe Docker Repository](https://github.com/frappe/frappe_docker)
 
 ## 🤝 Contributing
@@ -276,6 +282,8 @@ This deployment configuration is provided as-is. The individual Frappe apps have
 - Frappe HRMS: GNU General Public License v3.0
 - Frappe CRM: GNU Affero General Public License v3.0
 - Frappe LMS: GNU Affero General Public License v3.0
+- Frappe Drive: GNU Affero General Public License v3.0
+- Frappe Insights: GNU Affero General Public License v3.0
 
 ## 🆘 Support
 
@@ -286,6 +294,8 @@ For app-specific issues:
 - HRMS: [frappe/hrms](https://github.com/frappe/hrms/issues)
 - CRM: [frappe/crm](https://github.com/frappe/crm/issues)
 - LMS: [frappe/lms](https://github.com/frappe/lms/issues)
+- Drive: [frappe/drive](https://github.com/frappe/drive/issues)
+- Insights: [frappe/insights](https://github.com/frappe/insights/issues)
 
 ---
 

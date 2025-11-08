@@ -73,6 +73,8 @@ services:
           bench --site $${SITE_NAME} install-app hrms
           bench --site $${SITE_NAME} install-app crm
           bench --site $${SITE_NAME} install-app lms
+          bench --site $${SITE_NAME} install-app drive
+          bench --site $${SITE_NAME} install-app insights
           bench --site $${SITE_NAME} set-config developer_mode 0
           bench --site $${SITE_NAME} clear-cache
           echo "Site setup complete!"

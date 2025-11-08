@@ -9,7 +9,7 @@ Since the GitHub token doesn't have repository creation permissions, please foll
 1. Go to [https://github.com/new](https://github.com/new)
 2. Fill in the repository details:
    - **Repository name**: `frappe-unified-deployment`
-   - **Description**: `Unified Docker deployment for Frappe CRM, LMS, and HRMS - Easy single-site setup`
+   - **Description**: `Unified Docker deployment for Frappe CRM, LMS, HRMS, Drive, and Insights - Easy single-site setup`
    - **Visibility**: Public (or Private if you prefer)
    - **DO NOT** initialize with README, .gitignore, or license (we already have these)
 3. Click "Create repository"
@@ -18,7 +18,7 @@ Since the GitHub token doesn't have repository creation permissions, please foll
 ### Option 2: Using GitHub CLI (if you have proper permissions)
 
 ```bash
-gh repo create frappe-unified-deployment --public --description="Unified Docker deployment for Frappe CRM, LMS, and HRMS - Easy single-site setup"
+gh repo create frappe-unified-deployment --public --description="Unified Docker deployment for Frappe CRM, LMS, HRMS, Drive, and Insights - Easy single-site setup"
 ```
 
 ## Pushing the Code
