@@ -25,7 +25,7 @@ RUN set -e; \
     done
 
 # Build assets
-RUN bench build --apps frappe hrms crm lms drive insights
+RUN bench build --apps frappe hrms crm lms drive insights gameplan
 
 WORKDIR /home/frappe/frappe-bench/sites
 

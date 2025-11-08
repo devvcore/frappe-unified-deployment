@@ -22,5 +22,9 @@
   {
     "url": "https://github.com/frappe/insights",
     "branch": "develop"
+  },
+  {
+    "url": "https://github.com/frappe/gameplan",
+    "branch": "develop"
   }
 ]

@@ -1,6 +1,6 @@
 # Frappe Unified Deployment
 
-A unified Docker-based deployment solution that combines **Frappe CRM**, **Frappe LMS (Learning Management System)**, **Frappe HRMS**, **Frappe Drive**, and **Frappe Insights** into a single site for easy deployment and management.
+A unified Docker-based deployment solution that combines **Frappe CRM**, **Frappe LMS (Learning Management System)**, **Frappe HRMS**, **Frappe Drive**, **Frappe Insights**, and **Frappe Gameplan** into a single site for easy deployment and management.
 
 ## 📋 What's Included
 
@@ -12,6 +12,7 @@ This repository provides a production-ready Docker Compose setup that includes:
 - **Frappe LMS** - Learning Management System for courses and training
 - **Frappe Drive** - Open-source file storage, sharing, and collaboration platform
 - **Frappe Insights** - Open-source Business Intelligence and data analytics tool
+- **Frappe Gameplan** - Async-first discussions and collaboration platform for remote teams
 
 All apps are installed on a single Frappe site, sharing the same database and user authentication system.
 
@@ -103,6 +104,7 @@ After logging in, you can access different apps from the Frappe Desk:
 - **LMS**: Click on "Learning" or "LMS" module
 - **Drive**: Click on "Drive" module for file storage and collaboration
 - **Insights**: Click on "Insights" module for business intelligence and analytics
+- **Gameplan**: Click on "Gameplan" module for team discussions and collaboration
 
 All apps are integrated and share the same user database and permissions system.
 
@@ -268,6 +270,7 @@ Common issues:
 - [Frappe LMS Documentation](https://docs.frappe.io/lms)
 - [Frappe Drive Documentation](https://docs.frappe.io/drive)
 - [Frappe Insights Documentation](https://docs.frappe.io/insights)
+- [Frappe Gameplan Documentation](https://docs.frappe.io/gameplan)
 - [Frappe Docker Repository](https://github.com/frappe/frappe_docker)
 
 ## 🤝 Contributing
@@ -284,6 +287,7 @@ This deployment configuration is provided as-is. The individual Frappe apps have
 - Frappe LMS: GNU Affero General Public License v3.0
 - Frappe Drive: GNU Affero General Public License v3.0
 - Frappe Insights: GNU Affero General Public License v3.0
+- Frappe Gameplan: GNU Affero General Public License v3.0
 
 ## 🆘 Support
 
@@ -296,6 +300,7 @@ For app-specific issues:
 - LMS: [frappe/lms](https://github.com/frappe/lms/issues)
 - Drive: [frappe/drive](https://github.com/frappe/drive/issues)
 - Insights: [frappe/insights](https://github.com/frappe/insights/issues)
+- Gameplan: [frappe/gameplan](https://github.com/frappe/gameplan/issues)
 
 ---
 
